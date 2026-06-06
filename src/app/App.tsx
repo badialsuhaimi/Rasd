@@ -31,7 +31,7 @@ const PAGE_TITLES: Record<PageId, string> = {
   demo: 'بيئة المحاكاة الحية والاستجابة الآلية (SOAR Demo)' 
 };
 
-function PageContent({ page }: { page: PageId }) {
+function PageContent({ page }: { page: any }) {
   switch (page) {
     case 'dashboard':
       return <Dashboard />;
