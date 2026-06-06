@@ -6,10 +6,14 @@ import { AIInsights } from './components/AIInsights';
 import { AlertManagement } from './components/AlertManagement';
 import { ThreatFeed } from './components/ThreatFeed';
 import { PlaceholderPage } from './components/PlaceholderPage';
+// 1️⃣ استيراد مكون الـ Demo التفاعلي الجديد بمساره الصحيح
+import Demo from '../Demo'; 
+
 import {
   Globe, Camera, Cpu, Siren, BarChart3, Bug, FileText, Users, Settings
 } from 'lucide-react';
 
+// 2️⃣ إضافة معرف صفحة الـ Demo إلى العناوين الرئيسية ليظهر في شريط الـ TopBar
 const PAGE_TITLES: Record<PageId, string> = {
   dashboard: 'لوحة التحكم الرئيسية — رصد للمراقبة الأمنية',
   'national-overview': 'النظرة الوطنية — خريطة المراقبة الشاملة',
@@ -23,6 +27,8 @@ const PAGE_TITLES: Record<PageId, string> = {
   'ai-insights': 'رؤى الذكاء الاصطناعي — التحليل الاستباقي',
   'user-management': 'إدارة المستخدمين والصلاحيات',
   settings: 'إعدادات النظام',
+  // تم ربط العنوان هنا للـ Demo 🎮
+  demo: 'بيئة المحاكاة الحية والاستجابة الآلية (SOAR Demo)' 
 };
 
 function PageContent({ page }: { page: PageId }) {
@@ -43,6 +49,10 @@ function PageContent({ page }: { page: PageId }) {
           <ThreatFeed />
         </div>
       );
+    // 3️⃣ تفعيل الـ case الخاص بصفحة الـ Demo لتعرض الواجهة الحية والمتحركة
+    case 'demo':
+      return <Demo />;
+      
     case 'national-overview':
       return (
         <PlaceholderPage
@@ -143,6 +153,8 @@ export default function App() {
             padding: '16px',
             overflowY: 'auto',
             scrollbarWidth: 'none',
+            // zIndex تم تعديله لضمان عدم تداخل الخلفية مع الأزرار التفاعلية
+            position: 'relative',
           }}
         >
           <PageContent page={activePage} />
