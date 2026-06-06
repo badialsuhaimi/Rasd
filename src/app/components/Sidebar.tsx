@@ -2,9 +2,10 @@ import React from 'react';
 import {
   LayoutDashboard, Globe, ShieldAlert, Camera, Cpu, Siren,
   BarChart3, Bug, FileText, Brain, Users, Settings,
-  ChevronLeft, ChevronRight, Wifi, Shield
+  ChevronLeft, ChevronRight, Wifi, Shield, Terminal // 1️⃣ استيراد أيقونة الـ Terminal لمحاكاة السيرفر والـ Demo
 } from 'lucide-react';
 
+// 2️⃣ تم تحديث نوع المعرف (PageId) وإضافة خيار 'demo' في الأسفل ليقبله محرك تيب سكريبت بدون أخطاء
 export type PageId =
   | 'dashboard'
   | 'national-overview'
@@ -17,7 +18,8 @@ export type PageId =
   | 'reports'
   | 'ai-insights'
   | 'user-management'
-  | 'settings';
+  | 'settings'
+  | 'demo'; // الخيار المضاف حديثاً للدمو 🎮
 
 interface NavItem {
   id: PageId;
@@ -27,8 +29,10 @@ interface NavItem {
   badgeColor?: string;
 }
 
+// 3️⃣ إضافة زر المحاكاة الحية (Live Demo) في القائمة الجانبية ليرتسم برمجياً
 const NAV_ITEMS: NavItem[] = [
   { id: 'dashboard', label: 'لوحة التحكم', icon: <LayoutDashboard size={18} /> },
+  { id: 'demo', label: 'المحاكاة الحية (SOAR Demo)', icon: <Terminal size={18} />, badge: 1, badgeColor: '#10b981' }, // زر الدمو المحدث باللون الأخضر المميز لأدوات الاستجابة الآلية
   { id: 'national-overview', label: 'النظرة الوطنية', icon: <Globe size={18} />, badge: 3, badgeColor: '#FF3B30' },
   { id: 'threat-intelligence', label: 'استخبارات التهديدات', icon: <ShieldAlert size={18} />, badge: 12, badgeColor: '#FF3B30' },
   { id: 'camera-inventory', label: 'مخزون الكاميرات', icon: <Camera size={18} /> },
@@ -250,19 +254,4 @@ export function Sidebar({ activePage, onNavigate, collapsed, onToggle }: Sidebar
           }}
           onMouseLeave={(e) => {
             (e.currentTarget as HTMLElement).style.borderColor = 'rgba(10, 132, 255, 0.2)';
-            (e.currentTarget as HTMLElement).style.color = '#64748B';
-          }}
-        >
-          {collapsed ? <ChevronLeft size={16} /> : <ChevronRight size={16} />}
-          {!collapsed && <span style={{ fontSize: '12px' }}>طي القائمة</span>}
-        </button>
-      </div>
-
-      <style>{`
-        @keyframes ping {
-          75%, 100% { transform: scale(2); opacity: 0; }
-        }
-      `}</style>
-    </aside>
-  );
-}
+            (e.currentTarget as HTMLElement).style.color = '#
