@@ -284,7 +284,7 @@ export function TopBar({ pageTitle }: TopBarProps) {
       >
         <ChevronDown size={12} color="#64748B" />
         <div style={{ textAlign: 'right' }}>
-          <div style={{ color: '#E2E8F0', fontSize: '12px', fontWeight: '600' }}>م. عبدالله الغامدي</div>
+          <div style={{ color: '#E2E8F0', fontSize: '12px', fontWeight: '600' }}>م. بادي الحربي</div>
           <div style={{ color: '#64748B', fontSize: '10px' }}>محلل أمني أول</div>
         </div>
         <div
